@@ -37,13 +37,64 @@ def circle(start, end):
     "Draw circle from start to end."
     pass  # TODO
 
+
 def rectangle(start, end):
+    check=0.0
+    an=90;
+    check = end.x - start.x
     "Draw rectangle from start to end."
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    setheading(0)
+    begin_fill()
+
+    for count in range(2):
+        
+        #define length
+        forward(check)
+        
+        if (check < 0):
+            right(an)
+        else:
+            left(an)
+
+        #define width
+        forward(check*0.6)
+        
+        if (check < 0):
+            right(an)
+        else:
+            left(an)
+
+    end_fill()
+    
 
 def triangle(start, end):
-    "Draw triangle from start to end."
-    pass  # TODO
+    
+    check=0.0
+    an=120
+    check = end.x - start.x
+    
+    "Draw ISO_triangle from start to end."
+    up()
+    goto(start.x, start.y)
+    down()
+    setheading(0)
+    begin_fill()
+
+    for count in range(3):
+        
+        #define size side
+        forward(check)
+        
+        if (check < 0):
+            right(an)
+        else:
+            left(an)
+            
+    end_fill()
+    
 
 def tap(x, y):
     "Store starting point or draw shape."
