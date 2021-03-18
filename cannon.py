@@ -69,9 +69,10 @@ def move():
 
     for target in dupe2:
         if not inside(target):
-            pass
-        else:
-            targets.append(target)
+            y = randrange(-150, 150)
+            target.x = 200
+            target.y = y
+        targets.append(target)
             
     draw('blue','red')
     
