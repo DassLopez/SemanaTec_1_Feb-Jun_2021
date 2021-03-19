@@ -92,8 +92,8 @@ def world():
                 path.up()
                 path.goto(x + 10, y + 10)
                 if (((x == -60) and (y == 80))
-                   or ((x == -60) and (y == 80))
-                   or ((x == -60) and (y == 80))):
+                   or ((x == -80) and (y == -160))
+                   or ((x == 100) and (y == 20))):
 
                     path.dot(15, 'light green')
                 else:
