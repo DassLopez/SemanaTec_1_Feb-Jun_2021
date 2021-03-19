@@ -14,7 +14,7 @@ from random import choice
 from turtle import Turtle, bgcolor, clear, up, goto, dot, update, ontimer, \
      hideturtle, tracer, listen, onkey, setup, done
 from freegames import floor, vector
-from time import *
+from time import time
 
 state = {'score': 0}
 path = Turtle(visible=False)
@@ -54,7 +54,8 @@ m = 10  # value vector of ghosts
 m_2 = 5
 c = [0, 0, 0]  # active m = 5 if all equal to 1
 flag_eat_ghosts = [0]
-h = [0.0,0.0,0.0]
+h = [0.0, 0.0, 0.0]
+
 
 def square(x, y):
     "Draw square using path at (x, y)."
@@ -198,12 +199,8 @@ def move():
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
-
     update()
-    
-    pm = 0
     am = 0
-    
     h[1] = time()
     h[2] = h[1] - h[0]
     if (h[2] <= 15.0):
@@ -218,10 +215,9 @@ def move():
             else:
                 flag_eat_ghosts[0] = 0
             if ((flag_eat_ghosts[0] == 1)):
-                for i in range(0,4):
-                    if((ghosts[i][0])==point):
+                for i in range(0, 4):
+                    if((ghosts[i][0]) == point):
                         am = i
-                        pm = 0
                         break
                 ghosts.pop(am)
             elif(flag_eat_ghosts[0] == 0):
