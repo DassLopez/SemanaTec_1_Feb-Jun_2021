@@ -10,8 +10,11 @@ Exercises
 
 """
 
-from turtle import *
+from turtle import up, goto, down, begin_fill, forward, left, \
+    end_fill, setheading, right, onscreenclick, listen, onkey, \
+    undo, color, done, setup
 from freegames import vector
+
 
 def line(start, end):
     "Draw line from start to end."
@@ -19,6 +22,7 @@ def line(start, end):
     goto(start.x, start.y)
     down()
     goto(end.x, end.y)
+
 
 def square(start, end):
     "Draw square from start to end."
@@ -33,16 +37,18 @@ def square(start, end):
 
     end_fill()
 
+
 def circle(start, end):
     "Draw circle from start to end."
     pass  # TODO
 
 
 def rectangle(start, end):
-    check=0.0
-    an=90;
-    check = end.x - start.x
     "Draw rectangle from start to end."
+    check = 0.0
+    an = 90
+    check = end.x - start.x
+
     up()
     goto(start.x, start.y)
     down()
@@ -50,33 +56,26 @@ def rectangle(start, end):
     begin_fill()
 
     for count in range(2):
-        
-        #define length
+        # define length
         forward(check)
-        
         if (check < 0):
             right(an)
         else:
             left(an)
-
-        #define width
+        # define width
         forward(check*0.6)
-        
         if (check < 0):
             right(an)
         else:
             left(an)
-
     end_fill()
-    
+
 
 def triangle(start, end):
-    
-    check=0.0
-    an=120
+    "Draw isosceles triangle from start to end."
+    check = 0.0
+    an = 120
     check = end.x - start.x
-    
-    "Draw ISO_triangle from start to end."
     up()
     goto(start.x, start.y)
     down()
@@ -84,22 +83,18 @@ def triangle(start, end):
     begin_fill()
 
     for count in range(3):
-        
-        #define size side
+        # define size side
         forward(check)
-        
         if (check < 0):
             right(an)
         else:
             left(an)
-            
     end_fill()
-    
+
 
 def tap(x, y):
     "Store starting point or draw shape."
     start = state['start']
-
     if start is None:
         state['start'] = vector(x, y)
     else:
@@ -108,9 +103,11 @@ def tap(x, y):
         shape(start, end)
         state['start'] = None
 
+
 def store(key, value):
     "Store value in state at key."
     state[key] = value
+
 
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
