@@ -30,7 +30,7 @@ def square(start, end):
     goto(start.x, start.y)
     down()
     begin_fill()
-    
+
     for count in range(4):
         forward(end.x - start.x)
         left(90)
