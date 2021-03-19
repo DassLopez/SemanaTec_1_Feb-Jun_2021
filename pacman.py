@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-from random import choice
-from turtle import Turtle, bgcolor, clear, up, goto, dot, \
-    update, ontimer, setup, hideturtle, tracer, listen, onkey, done
-=======
 """Pacman, classic arcade game.
 
 Exercises
@@ -18,7 +13,6 @@ Exercises
 from random import choice
 from turtle import Turtle, bgcolor, clear, up, goto, dot, update, ontimer, \
      hideturtle, tracer, listen, onkey, setup, done
->>>>>>> absalon/main
 from freegames import floor, vector
 
 state = {'score': 0}
@@ -34,7 +28,6 @@ ghosts = [
 ]
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-<<<<<<< HEAD
     0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -52,28 +45,12 @@ tiles = [
     0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0,
-=======
-    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0,
-    0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-    0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
->>>>>>> absalon/main
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
+m = 10  # value vector of ghosts
+m_2 = 5
+c = [0, 0, 0]  # active m = 5 if all equal to 1
 
 
 def square(x, y):
@@ -129,21 +106,22 @@ def world():
             if tile == 1:
                 path.up()
                 path.goto(x + 10, y + 10)
-<<<<<<< HEAD
+
                 if (((x == -60) and (y == 80))
                    or ((x == -80) and (y == -160))
                    or ((x == 100) and (y == 20))):
 
-                    path.dot(15, 'light green')
+                    path.dot(15, 'light pink')
                 else:
                     path.dot(2, 'white')
                 # each 20
-=======
-                path.dot(2, 'white')
->>>>>>> absalon/main
 
 
 def move():
+    if((c[0] == 1) and (c[1] == 1) and (c[2] == 1)):
+        z = m_2
+    else:
+        z = m
     "Move pacman and all ghosts."
     writer.undo()
     writer.write(state['score'])
@@ -157,9 +135,21 @@ def move():
 
     if tiles[index] == 1:
         tiles[index] = 2
-        state['score'] += 1
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
+        # print("X: "+str(x)+" Y: "+str(y))
+        if (((x == -60) and (y == 80))
+           or ((x == -80) and (y == -160))
+           or ((x == 100) and (y == 20))):
+            state['score'] += 100
+            if ((x == -60) and (y == 80)):
+                c[0] = 1
+            elif ((x == -80) and (y == -160)):
+                c[1] = 1
+            else:
+                c[2] = 1
+        else:
+            state['score'] += 1
         square(x, y)
 
     up()
@@ -170,35 +160,32 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
-<<<<<<< HEAD
             options = [
-                vector(10, 0),
-                vector(-10, 0),
-                vector(0, 10),
-                vector(0, -10),
+                vector(z, 0),
+                vector(-z, 0),
+                vector(0, z),
+                vector(0, -z),
             ]
-=======
             if pacman.x >= point.x:
                 options = [
-                    vector(5, 0),
-                    vector(0, 5),
-                    vector(0, -5),
+                    vector(z, 0),
+                    vector(0, z),
+                    vector(0, -z),
                 ]
             elif pacman.y >= point.y:
                 options = [
-                    vector(5, 0),
-                    vector(-5, 0),
-                    vector(0, 5),
+                    vector(z, 0),
+                    vector(-z, 0),
+                    vector(0, z),
                 ]
 
             else:
                 options = [
-                    vector(5, 0),
-                    vector(-5, 0),
-                    vector(0, 5),
-                    vector(0, -5),
+                    vector(z, 0),
+                    vector(-z, 0),
+                    vector(0, z),
+                    vector(0, -z),
                 ]
->>>>>>> absalon/main
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
@@ -206,18 +193,15 @@ def move():
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
-
+    # print("Z: "+str(z))
+    # print("C: "+str(c))
     update()
 
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
 
-<<<<<<< HEAD
     ontimer(move, 60)
-=======
-    ontimer(move, 100)
->>>>>>> absalon/main
 
 
 def change(x, y):
