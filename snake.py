@@ -9,7 +9,8 @@ Exercises
 
 """
 
-from turtle import *
+from turtle import clear, update, ontimer, setup, hideturtle, tracer, listen, \
+     onkey, done
 from random import randrange
 from freegames import square, vector
 from random import randint
@@ -17,14 +18,17 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+
 def change(x, y):
     "Change snake direction."
     aim.x = x
     aim.y = y
 
+
 def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
+
 
 def move():
     "Move snake forward one segment."
@@ -44,31 +48,30 @@ def move():
         food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
-        
-        if randint(0,1) == 0:
-            valor=randrange(-1,2)
-            print (valor)
-            food.x= food.x+(valor * 10)
+
+        if randint(0, 1) == 0:
+            valor = randrange(-1, 2)
+            print(valor)
+            food.x = food.x+(valor * 10)
             if food.x == 140:
-                food.x=food.x-20
+                food.x = food.x-20
             if food.x == -140:
-                food.x= food.x +20
+                food.x = food.x + 20
         else:
-            valor=randrange(-1,2)
-            food.y=food.y+(valor * 10)
+            valor = randrange(-1, 2)
+            food.y = food.y + (valor * 10)
             if food.y == 140:
-                food.y=food.y-20
+                food.y = food.y - 20
             if food.y == -140:
-                food.y= food.y +20
-
+                food.y = food.y + 20
     clear()
-
     for body in snake:
         square(body.x, body.y, 9, 'black')
 
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
+
 
 setup(420, 420, 370, 0)
 hideturtle()
