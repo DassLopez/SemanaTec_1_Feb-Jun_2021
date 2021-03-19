@@ -9,6 +9,7 @@ Exercises
 
 """
 
+<<<<<<< HEAD
 from turtle import update, clear, ontimer, setup, \
     hideturtle, tracer, listen, onkey, done
 from random import randrange
@@ -26,6 +27,16 @@ while (snake_colour == food_colour):
 
 snake_colour_str = banco[snake_colour]
 food_colour_str = banco[food_colour]
+=======
+from turtle import clear, update, ontimer, setup, hideturtle, tracer, listen, \
+     onkey, done
+from random import randrange
+from freegames import square, vector
+from random import randint
+food = vector(0, 0)
+snake = [vector(10, 0)]
+aim = vector(0, -10)
+>>>>>>> absalon/main
 
 
 def change(x, y):
@@ -43,23 +54,57 @@ def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
+<<<<<<< HEAD
+=======
+
+>>>>>>> absalon/main
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
         return
+<<<<<<< HEAD
     snake.append(head)
+=======
+
+    snake.append(head)
+
+>>>>>>> absalon/main
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
+<<<<<<< HEAD
     clear()
 
     for body in snake:
         square(body.x, body.y, 9, snake_colour_str)
 
     square(food.x, food.y, 9, food_colour_str)
+=======
+
+        if randint(0, 1) == 0:
+            valor = randrange(-1, 2)
+            print(valor)
+            food.x = food.x+(valor * 10)
+            if food.x == 140:
+                food.x = food.x-20
+            if food.x == -140:
+                food.x = food.x + 20
+        else:
+            valor = randrange(-1, 2)
+            food.y = food.y + (valor * 10)
+            if food.y == 140:
+                food.y = food.y - 20
+            if food.y == -140:
+                food.y = food.y + 20
+    clear()
+    for body in snake:
+        square(body.x, body.y, 9, 'black')
+
+    square(food.x, food.y, 9, 'green')
+>>>>>>> absalon/main
     update()
     ontimer(move, 100)
 

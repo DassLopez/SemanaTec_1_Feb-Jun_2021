@@ -1,6 +1,24 @@
+<<<<<<< HEAD
 from random import choice
 from turtle import Turtle, bgcolor, clear, up, goto, dot, \
     update, ontimer, setup, hideturtle, tracer, listen, onkey, done
+=======
+"""Pacman, classic arcade game.
+
+Exercises
+
+1. Change the board.
+2. Change the number of ghosts.
+3. Change where pacman starts.
+4. Make the ghosts faster/slower.
+5. Make the ghosts smarter.
+
+"""
+
+from random import choice
+from turtle import Turtle, bgcolor, clear, up, goto, dot, update, ontimer, \
+     hideturtle, tracer, listen, onkey, setup, done
+>>>>>>> absalon/main
 from freegames import floor, vector
 
 state = {'score': 0}
@@ -16,6 +34,7 @@ ghosts = [
 ]
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+<<<<<<< HEAD
     0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -33,6 +52,25 @@ tiles = [
     0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0,
+=======
+    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0,
+    0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+>>>>>>> absalon/main
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
@@ -91,6 +129,7 @@ def world():
             if tile == 1:
                 path.up()
                 path.goto(x + 10, y + 10)
+<<<<<<< HEAD
                 if (((x == -60) and (y == 80))
                    or ((x == -80) and (y == -160))
                    or ((x == 100) and (y == 20))):
@@ -99,6 +138,9 @@ def world():
                 else:
                     path.dot(2, 'white')
                 # each 20
+=======
+                path.dot(2, 'white')
+>>>>>>> absalon/main
 
 
 def move():
@@ -128,12 +170,35 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+<<<<<<< HEAD
             options = [
                 vector(10, 0),
                 vector(-10, 0),
                 vector(0, 10),
                 vector(0, -10),
             ]
+=======
+            if pacman.x >= point.x:
+                options = [
+                    vector(5, 0),
+                    vector(0, 5),
+                    vector(0, -5),
+                ]
+            elif pacman.y >= point.y:
+                options = [
+                    vector(5, 0),
+                    vector(-5, 0),
+                    vector(0, 5),
+                ]
+
+            else:
+                options = [
+                    vector(5, 0),
+                    vector(-5, 0),
+                    vector(0, 5),
+                    vector(0, -5),
+                ]
+>>>>>>> absalon/main
             plan = choice(options)
             course.x = plan.x
             course.y = plan.y
@@ -148,7 +213,11 @@ def move():
         if abs(pacman - point) < 20:
             return
 
+<<<<<<< HEAD
     ontimer(move, 60)
+=======
+    ontimer(move, 100)
+>>>>>>> absalon/main
 
 
 def change(x, y):
